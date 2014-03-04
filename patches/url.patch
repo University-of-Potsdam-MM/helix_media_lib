@@ -1,0 +1,14 @@
+--- mod/url/locallib.php.orig	2011-11-16 15:00:50.000000000 +0000
++++ mod/url/locallib.php	2011-11-16 15:01:21.000000000 +0000
+@@ -368,6 +368,11 @@
+         return $url->display;
+     }
+ 
++    /***Patched by tmw@autotrain.org***/
++    if (strpos($url->externalurl, '/repository/helix_media_lib/')!=false)
++        return RESOURCELIB_DISPLAY_EMBED;
++    /***End of tmw patch****/
++
+     // detect links to local moodle pages
+     if (strpos($url->externalurl, $CFG->wwwroot) === 0) {
+         if (strpos($url->externalurl, 'file.php') === false and strpos($url->externalurl, '.php') !== false ) {
